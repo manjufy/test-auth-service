@@ -1,0 +1,23 @@
+{
+  "name": "test-auth-service",
+  "version": "1.0.0",
+  "description": "Auth Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/manjufy/test-auth-service.git"
+  },
+  "keywords": [
+    "auth-service",
+    "rbac"
+  ],
+  "author": "Manjunath Reddy <manju16832003@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manjufy/test-auth-service/issues"
+  },
+  "homepage": "https://github.com/manjufy/test-auth-service#readme"
+}
