@@ -1,11 +1,23 @@
-import express, { Application, Request, Response } from 'express'
-const app: Application = express()
-const port: number = 8080
+import * as express from 'express';
 
-app.get('/health', (req: Request, res: Response) => {
-    res.send(`I'm Healthy!`)
-})
+import app from './server';
+import errorHandler from "./lib/error.handler";
+import Logger from './lib/Logger';
 
-app.listen(port, () => {
-    console.log(`App is listening on port ${port} !`)
-})
+const initiliase = async () => {
+    // Configure express middlewares
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
+    // Hide server information
+    app.disable('x-powered-by');
+
+    // Handle errors
+    errorHandler(app);
+};
+
+export default app;
+
+initiliase()
+    .then(() => Logger.info(`Server is UP`))
+    .catch(error => Logger.error(`Unknow Error: ${error}`));

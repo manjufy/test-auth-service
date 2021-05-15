@@ -70,5 +70,8 @@
   },
   "include": [
     "src/**/*"
-  ]
+  ],
+  "types": [
+    "reflect-metadata"
+  ],
 }
