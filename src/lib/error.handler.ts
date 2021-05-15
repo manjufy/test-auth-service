@@ -1,5 +1,5 @@
 import { Application, Request, Response, NextFunction } from 'express';
-import { NotFoundError } from '../errors';
+import { NotFoundError } from './errors';
 import Logger from './Logger';
 
 /**
@@ -8,11 +8,6 @@ import Logger from './Logger';
  * @returns {Function}
  */
 export default (app: Application) => {
-    // Lost resort
-    app.use(() => {
-        throw new NotFoundError("Resource not found.");
-    });
-
     // Log all errors
     app.use((err: any, req: Request, res: Response, next: NextFunction) => {
         Logger.error(`Error occured`, err);

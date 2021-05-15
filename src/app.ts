@@ -1,23 +1,36 @@
-import * as express from 'express';
+import 'reflect-metadata';
+import { InversifyExpressServer } from 'inversify-express-utils';
+import * as bodyParser from 'body-parser';
+import { Container } from 'inversify';
+import dotenv from 'dotenv';
+dotenv.config();
 
-import app from './server';
-import errorHandler from "./lib/error.handler";
 import Logger from './lib/Logger';
+import errorHandler from "./lib/error.handler";
+const PORT = process.env.PORT || 8080;
 
-const initiliase = async () => {
-    // Configure express middlewares
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: true }));
+// Controllers
+import './app/controllers/health';
 
-    // Hide server information
-    app.disable('x-powered-by');
+// setup the IoC
+const container = new Container();
 
-    // Handle errors
+// start the server
+const server = new InversifyExpressServer(container);
+
+server.setConfig((app) => {
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
+    app.use(bodyParser.json());
+
+        // Handle errors
     errorHandler(app);
-};
+});
 
-export default app;
+const appInstance = server.build();
+appInstance.listen(PORT);
 
-initiliase()
-    .then(() => Logger.info(`Server is UP`))
-    .catch(error => Logger.error(`Unknow Error: ${error}`));
+Logger.info(`Server started on port ${PORT}`)
+
+// export default appInstance;
