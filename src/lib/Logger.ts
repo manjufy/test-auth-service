@@ -1,4 +1,8 @@
-// Reference: https://levelup.gitconnected.com/better-logs-for-expressjs-using-winston-and-morgan-with-typescript-1c31c1ab9342
+/**
+ * Logger implementation.
+ * 
+ * Reference: Reference: https://levelup.gitconnected.com/better-logs-for-expressjs-using-winston-and-morgan-with-typescript-1c31c1ab9342
+ */
 
 import winston from 'winston';
 
@@ -40,7 +44,7 @@ const transports = [
         filename: 'logs/error.log',
         level: 'error',
     }),
-    new winston.transports.File({ filename: 'logs/all.log' }),
+    new winston.transports.File({ filename: 'logs/verbose.log' }),
 ]
 
 const Logger = winston.createLogger({
@@ -50,4 +54,4 @@ const Logger = winston.createLogger({
     transports,
 })
 
-export default Logger
+export default Logger;

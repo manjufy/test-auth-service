@@ -2,6 +2,11 @@ import { Application, Request, Response, NextFunction } from 'express';
 import { NotFoundError } from '../errors';
 import Logger from './Logger';
 
+/**
+ * Application error handler.
+ * @param {Object} app - Express Application
+ * @returns {Function}
+ */
 export default (app: Application) => {
     // Lost resort
     app.use(() => {
