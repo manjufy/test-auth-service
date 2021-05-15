@@ -2,6 +2,8 @@
  * @desc Create and configure DI Container
  * Reference: https://inversify.io/
  */
+
+ import 'reflect-metadata';
 import { Container } from 'inversify';
 import ContainerTypes from './lib/constants/types';
 
