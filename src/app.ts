@@ -7,19 +7,10 @@ dotenv.config();
 
 import Logger from './lib/Logger';
 import errorHandler from "./lib/error.handler";
+// get IoC container
+import container from './di-container';
+
 const PORT = process.env.PORT || 8080;
-
-// Set up services
-import TYPES from './lib/constants/types';
-import HealthServiceImpl from './app/services/HealthServiceImpl';
-
-// Controllers
-import './app/controllers/health';
-
-// setup the IoC
-const container = new Container();
-container.bind<HealthServiceImpl>(TYPES.HealthServiceImpl).to(HealthServiceImpl);
-
 // start the server
 const server = new InversifyExpressServer(container);
 

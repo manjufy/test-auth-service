@@ -1,5 +1,5 @@
-const TYPES = {
+const ContainerTypes = {
     HealthServiceImpl: Symbol.for('HealthServiceImpl')
 };
 
-export default TYPES;
+export default ContainerTypes;
