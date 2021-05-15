@@ -1,9 +1,8 @@
 import 'reflect-metadata';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import * as bodyParser from 'body-parser';
-import { Container } from 'inversify';
-import dotenv from 'dotenv';
-dotenv.config();
+import * as dotenv from 'dotenv';
+dotenv.config({path: __dirname + '/.env'})
 
 import Logger from './lib/Logger';
 import errorHandler from "./lib/error.handler";
