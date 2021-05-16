@@ -11,6 +11,10 @@ constructor(@inject(ContainerTypes.UserServiceImpl) private userService: UserSer
 
     @httpGet('/')
     public get(): Promise<UserDTO> {
+        /**
+         * FIXME: Not the right thing to do.
+         * Just testing to make sure application layers such as Controller -> Service -> DTO -> Repository -> Data Store is working
+         */
         const user = {
             firstName: 'Manjunath',
             lastName: 'Reddy',

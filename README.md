@@ -7,6 +7,11 @@
     - npm run dev
     - npm run test:watch (for tests)
 
-## TODO
+    Working routes
 
- - Ability for Repository to identify the model name and act as a Persitence Entity to query DB
+    ```
+    http://localhost:8080/health
+
+    http://localhost:8080/auth (Create a User in DB everytime we hit this endpoint [For testing])
+
+    ```
